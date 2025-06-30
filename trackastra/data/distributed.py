@@ -30,7 +30,7 @@ def cache_class(cachedir=None):
     """A simple file cache for CTCData."""
 
     def make_hashable(obj):
-        if isinstance(obj, tuple | list):
+        if isinstance(obj, tuple):
             return tuple(make_hashable(e) for e in obj)
         elif isinstance(obj, Path):
             return obj.as_posix()
@@ -82,7 +82,7 @@ class BalancedBatchSampler(BatchSampler):
         dataset: torch.utils.data.Dataset,
         batch_size: int,
         n_pool: int = 10,
-        num_samples: int | None = None,
+        num_samples: int = None,
         weight_by_ndivs: bool = False,
         weight_by_dataset: bool = False,
         drop_last: bool = False,

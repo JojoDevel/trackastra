@@ -8,7 +8,7 @@ import pytest
 ROOT_DIR = Path(__file__).resolve().parents[1]
 
 
-def download_gt_data(url: str, data_dir: str | Path):
+def download_gt_data(url: str, data_dir: str):
     data_dir = Path(data_dir)
 
     if not data_dir.exists():

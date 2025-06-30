@@ -84,10 +84,10 @@ def track_greedy(
 
 def build_graph(
     nodes: dict,
-    weights: tuple | None = None,
+    weights: tuple = None,
     use_distance: bool = False,
-    max_distance: int | None = None,
-    max_neighbors: int | None = None,
+    max_distance: int = None,
+    max_neighbors: int = None,
     delta_t=1,
 ):
     logger.info(f"Build candidate graph with {delta_t=}")

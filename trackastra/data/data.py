@@ -122,7 +122,7 @@ class CTCData(Dataset):
         use_gt: bool = True,
         detection_folders: list[str] = ["TRA"],
         window_size: int = 10,
-        max_tokens: int | None = None,
+        max_tokens: int = None,
         slice_pct: tuple = (0.0, 1.0),
         downscale_spatial: int = 1,
         downscale_temporal: int = 1,
@@ -136,7 +136,7 @@ class CTCData(Dataset):
             "wrfeat",
         ] = "wrfeat",
         sanity_dist: bool = False,
-        crop_size: tuple | None = None,
+        crop_size: tuple = None,
         return_dense: bool = False,
         compress: bool = False,
         **kwargs,
@@ -485,7 +485,7 @@ class CTCData(Dataset):
         return masks, track_df
 
     def _correct_gt_with_st(
-        self, folder: Path, x: np.ndarray, dtype: str | None = None
+        self, folder: Path, x: np.ndarray, dtype: str = None
     ):
         if str(folder).endswith("_GT/TRA"):
             st_path = (

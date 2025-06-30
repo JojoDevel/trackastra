@@ -56,7 +56,7 @@ def download(url: str, fname: Path):
             bar.update(size)
 
 
-def download_pretrained(name: str, download_dir: Path | None = None):
+def download_pretrained(name: str, download_dir: Path = None):
     # TODO make safe, introduce versioning
     if download_dir is None:
         download_dir = files("trackastra").joinpath(".models")

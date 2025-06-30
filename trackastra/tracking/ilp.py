@@ -60,7 +60,7 @@ def track_ilp(
     candidate_graph,
     allow_divisions: bool = True,
     ilp_config: str = "gt",
-    params_file: str | None = None,
+    params_file: str = None,
     **kwargs,
 ):
     candidate_graph_motile = motile.TrackGraph(candidate_graph, frame_attribute="time")
@@ -82,7 +82,7 @@ def solve_full_ilp(
     graph,
     allow_divisions: bool,
     mode: str,
-    params_file: str | None,
+    params_file: str,
 ):
     solver = motile.Solver(graph)
     if params_file:

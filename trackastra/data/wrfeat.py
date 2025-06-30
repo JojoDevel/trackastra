@@ -38,7 +38,7 @@ _PROPERTIES = {
 
 
 def _filter_points(
-    points: np.ndarray, shape: tuple[int], origin: tuple[int] | None = None
+    points: np.ndarray, shape: tuple[int], origin: tuple[int] = None
 ) -> np.ndarray:
     """Returns indices of points that are inside the shape extent and given origin."""
     ndim = points.shape[-1]
@@ -244,7 +244,7 @@ class WRRandomCrop:
 
     def __init__(
         self,
-        crop_size: int | tuple[int] | None = None,
+        crop_size: int = None,
         ndim: int = 2,
     ) -> None:
         """crop_size: tuple of int
@@ -500,7 +500,7 @@ class WRAugmentationPipeline:
 
 def get_features(
     detections: np.ndarray,
-    imgs: np.ndarray | None = None,
+    imgs: np.ndarray = None,
     features: Literal["none", "wrfeat"] = "wrfeat",
     ndim: int = 2,
     n_workers=0,

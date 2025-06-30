@@ -218,7 +218,7 @@ def graph_to_edge_table(
     graph: nx.DiGraph,
     frame_attribute: str = "time",
     edge_attribute: str = "weight",
-    outpath: Path | None = None,
+    outpath: Path = None,
 ) -> pd.DataFrame:
     """Write edges of a graph to a table.
 
@@ -280,7 +280,7 @@ def graph_to_ctc(
     masks_original: np.ndarray,
     check: bool = True,
     frame_attribute: str = "time",
-    outdir: Path | None = None,
+    outdir: Path = None,
 ) -> tuple[pd.DataFrame, np.ndarray]:
     """Convert graph to ctc track Dataframe and relabeled masks.
 

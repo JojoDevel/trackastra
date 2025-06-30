@@ -14,10 +14,10 @@ logger = logging.getLogger(__name__)
 
 def load_tiff_timeseries(
     dir: Path,
-    dtype: str | type | None = None,
-    downscale: tuple[int, ...] | None = None,
+    dtype: str = None,
+    downscale: tuple[int, ...] = None,
     start_frame: int = 0,
-    end_frame: int | None = None,
+    end_frame: int = None,
 ) -> np.ndarray:
     """Loads a folder of `.tif` or `.tiff` files into a numpy array.
     Each file is interpreted as a frame of a time series.

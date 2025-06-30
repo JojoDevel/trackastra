@@ -101,7 +101,7 @@ class Trackastra:
         self.train_args = train_args
 
     @classmethod
-    def from_folder(cls, dir: Path | str, device: str | None = None):
+    def from_folder(cls, dir: Path, device: str = None):
         """Load a Trackastra model from a local folder.
 
         Args:
@@ -122,7 +122,7 @@ class Trackastra:
 
     @classmethod
     def from_pretrained(
-        cls, name: str, device: str | None = None, download_dir: Path | None = None
+        cls, name: str, device: str = None, download_dir: Path = None
     ):
         """Load a pretrained Trackastra model.
 
@@ -142,8 +142,8 @@ class Trackastra:
 
     def _predict(
         self,
-        imgs: np.ndarray | da.Array,
-        masks: np.ndarray | da.Array,
+        imgs: np.ndarray,
+        masks: np.ndarray,
         edge_threshold: float = 0.05,
         n_workers: int = 0,
         normalize_imgs: bool = True,
@@ -219,8 +219,8 @@ class Trackastra:
 
     def track(
         self,
-        imgs: np.ndarray | da.Array,
-        masks: np.ndarray | da.Array,
+        imgs: np.ndarray,
+        masks: np.ndarray,
         mode: Literal["greedy_nodiv", "greedy", "ilp"] = "greedy",
         normalize_imgs: bool = True,
         progbar_class=tqdm,
