@@ -295,7 +295,7 @@ def blockwise_causal_norm(
     return res
 
 
-def normalize_tensor(x: torch.Tensor, dim: int | None = None, eps: float = 1e-8):
+def normalize_tensor(x: torch.Tensor, dim: int = None, eps: float = 1e-8):
     if dim is None:
         dim = tuple(range(x.ndim))
 
@@ -303,7 +303,7 @@ def normalize_tensor(x: torch.Tensor, dim: int | None = None, eps: float = 1e-8)
     return (x - mi) / (ma - mi + eps)
 
 
-def normalize(x: np.ndarray | da.Array, subsample: int | None = 4):
+def normalize(x: np.ndarray, subsample: int = 4):
     """Percentile normalize the image.
 
     If subsample is not None, calculate the percentile values over a subsampled image (last two axis)
