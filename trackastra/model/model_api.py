@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Literal
 
 import dask.array as da
+import networkx as nx
 import numpy as np
 import tifffile
 import torch
@@ -214,6 +215,10 @@ class Trackastra:
         logger.info("Running greedy tracker")
         nodes = predictions["nodes"]
         weights = predictions["weights"]
+
+        if len(nodes) == 0:
+            # shortcut for empty predictions
+            return nx.DiGraph()
 
         candidate_graph = build_graph(
             nodes=nodes,
