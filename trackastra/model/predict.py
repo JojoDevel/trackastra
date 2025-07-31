@@ -42,6 +42,10 @@ def predict(batch: list[dict], model: TrackingTransformer) -> np.ndarray:
     timepoints = padded_batch["timepoints"].long()
     padding_mask = padded_batch["padding_mask"]
 
+    if feats.size()[1] == 0:
+        # fix return for empty batches
+        return np.zeros((0, 0, 0), dtype=np.float32)
+
     # Hack that assumes that all parameters of a model are on the same device
     device = next(model.parameters()).device
     feats = feats.to(device)
