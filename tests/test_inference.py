@@ -29,5 +29,26 @@ def test_empty_intermediate_mask():
     )
 
 
+def test_empty_masks():
+    """test inference with empty masks"""
+
+    imgs = np.zeros((5, 100, 100), dtype=np.uint16)
+    masks = np.zeros((5, 100, 100), dtype=np.uint16)
+
+    model = Trackastra.from_pretrained("general_2d", device="cpu")
+
+    predictions = model._predict(imgs, masks)
+
+    model._track_from_predictions(predictions)
+
+    tracking_graph = model.track(
+        imgs,
+        masks,
+        mode="greedy",
+    )
+
+    print(tracking_graph.number_of_nodes())
+
+
 if __name__ == "__main__":
-    test_empty_intermediate_mask()
+    test_empty_masks()
